@@ -1,3 +1,4 @@
+import Chat from "./components/Chat";
 import Score from "./components/Score";
 
 export default function Home() {
@@ -8,6 +9,8 @@ export default function Home() {
       <Score teamName="Golden State Warriors" />
 
       <Score teamName="Lair" />
+
+      <Chat />
     </main>
-  )
+  );
 }
