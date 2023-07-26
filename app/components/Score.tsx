@@ -5,20 +5,21 @@ import useSocket from "../hooks/useSocket";
 
 interface Props {
   teamName: string;
+  type: "home" | "away";
 }
 
-export default function Score({ teamName }: Props) {
-  const [scoreRafa, setScoreRafa] = useState(0);
-  const [sendMsg] = useSocket();
+export default function Score({ teamName, type }: Props) {
+  const [game, incTeamScore] = useSocket();
 
+  console.log(game);
   const handleClick = () => {
-    sendMsg("click score");
+    incTeamScore(type);
   };
 
   return (
     <div>
       <span>Time {teamName}:</span>
-      <span>{scoreRafa}</span>
+      <span>{type === "away" ? game.awayTeam.score : game.homeTeam.score}</span>
       {"    "}
       <button onClick={() => setScoreRafa(scoreRafa + 1)}>Up</button>
       <br />
