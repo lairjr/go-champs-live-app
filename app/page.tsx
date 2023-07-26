@@ -5,9 +5,10 @@ export default function Home() {
     <main>
       <h1>Game View</h1>
 
-      <Score teamName="Golden State Warriors" />
+      <Score teamName="Golden State Warriors" type="home" />
 
-      <Score teamName="Lair" />
+      <hr />
+      <Score teamName="Lair" type="away" />
     </main>
-  )
+  );
 }
