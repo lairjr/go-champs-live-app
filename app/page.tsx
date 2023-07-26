@@ -7,7 +7,8 @@ export default function Home() {
 
       <Score teamName="Golden State Warriors" />
 
+      <hr />
       <Score teamName="Lair" />
     </main>
-  )
+  );
 }
