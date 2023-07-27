@@ -7,10 +7,13 @@ interface TeamState {
 }
 
 interface GameState {
+  id: string;
   awayTeam: TeamState;
   homeTeam: TeamState;
 }
+
 const INITIAL_GAME_STATE: GameState = {
+  id: "",
   awayTeam: {
     name: "",
     score: 0,
@@ -27,12 +30,13 @@ const useSocket = () => {
 
   useEffect(() => {
     socket.addEventListener("open", (data) => {
-      socket.send(JSON.stringify({ type: "load_game" }));
+      socket.send(JSON.stringify({ type: "init_game" }));
     });
+
     socket.addEventListener("message", (msg) => {
       const messageData = JSON.parse(msg.data);
 
-      if (messageData.type === "load_game") {
+      if (messageData.type === "update_game") {
         const gameState = messageData.payload as GameState;
         setGame(gameState);
       }
