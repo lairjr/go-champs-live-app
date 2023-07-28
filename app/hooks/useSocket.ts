@@ -30,7 +30,7 @@ const useSocket = () => {
 
   useEffect(() => {
     socket.addEventListener("open", (data) => {
-      socket.send(JSON.stringify({ type: "init_game" }));
+      socket.send(JSON.stringify({ type: "load_game" }));
     });
 
     socket.addEventListener("message", (msg) => {
