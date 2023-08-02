@@ -1,3 +1,8 @@
+interface Player {
+  id: string;
+  name: string;
+}
+
 interface Team {
   name: string;
   score: number;
@@ -6,7 +11,9 @@ interface Team {
 export interface GameState {
   id: string;
   awayTeam: Team;
+  awayPlayers: Player[];
   homeTeam: Team;
+  homePlayers: Player[];
 }
 
 const INIT_GAME_MESSAGE = "init_game";
@@ -35,10 +42,22 @@ export const INITIAL_STATE: GameState = {
     name: "Away Team",
     score: 0,
   },
+  awayPlayers: [
+    {
+      id: "first-player",
+      name: "First player",
+    },
+  ],
   homeTeam: {
     name: "Home Team",
     score: 0,
   },
+  homePlayers: [
+    {
+      id: "home-player",
+      name: "Home player",
+    },
+  ],
 };
 
 type Action = (state: GameState, message: GameMessage) => GameState;
