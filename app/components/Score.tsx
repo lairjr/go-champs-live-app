@@ -10,8 +10,16 @@ export default function Score() {
     <div>
       <p>Box Score</p>
 
-      <BoxScore team={game.homeTeam} incScore={incTeamHomeScore} />
-      <BoxScore team={game.awayTeam} incScore={incTeamAwayScore} />
+      <BoxScore
+        players={game.homePlayers}
+        team={game.homeTeam}
+        incScore={incTeamHomeScore}
+      />
+      <BoxScore
+        players={game.awayPlayers}
+        team={game.awayTeam}
+        incScore={incTeamAwayScore}
+      />
     </div>
   );
 }

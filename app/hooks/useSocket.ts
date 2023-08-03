@@ -1,6 +1,11 @@
 import { useContext, useEffect, useState } from "react";
 import WsContext from "../providers/wscontext";
 
+export interface Player {
+  id: string;
+  name: string;
+}
+
 export interface TeamState {
   name: string;
   score: number;
@@ -9,7 +14,9 @@ export interface TeamState {
 export interface GameState {
   id: string;
   awayTeam: TeamState;
+  awayPlayers: Player[];
   homeTeam: TeamState;
+  homePlayers: Player[];
 }
 
 const INITIAL_GAME_STATE: GameState = {
@@ -18,10 +25,12 @@ const INITIAL_GAME_STATE: GameState = {
     name: "",
     score: 0,
   },
+  awayPlayers: [],
   homeTeam: {
     name: "",
     score: 0,
   },
+  homePlayers: [],
 };
 
 const useSocket = () => {
