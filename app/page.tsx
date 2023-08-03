@@ -8,10 +8,7 @@ export default function Home() {
 
       <Controls />
 
-      <Score type="home" />
-
-      <hr />
-      <Score type="away" />
+      <Score />
     </main>
   );
 }

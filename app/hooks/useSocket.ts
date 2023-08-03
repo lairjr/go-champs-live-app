@@ -1,12 +1,12 @@
 import { useContext, useEffect, useState } from "react";
 import WsContext from "../providers/wscontext";
 
-interface TeamState {
+export interface TeamState {
   name: string;
   score: number;
 }
 
-interface GameState {
+export interface GameState {
   id: string;
   awayTeam: TeamState;
   homeTeam: TeamState;
@@ -49,19 +49,19 @@ const useSocket = () => {
     };
   }, []);
 
-  const incTeamScore = (team: "away" | "home") => {
-    if (team === "away") {
-      socket.send(JSON.stringify({ type: "inc_away_team_score" }));
-    } else {
-      socket.send(JSON.stringify({ type: "inc_home_team_score" }));
-    }
+  const incTeamAwayScore = () => {
+    socket.send(JSON.stringify({ type: "inc_away_team_score" }));
+  };
+
+  const incTeamHomeScore = () => {
+    socket.send(JSON.stringify({ type: "inc_home_team_score" }));
   };
 
   const initGame = () => {
     socket.send(JSON.stringify({ type: "init_game" }));
   };
 
-  return [game, { incTeamScore, initGame }];
+  return [game, { incTeamAwayScore, incTeamHomeScore, initGame }];
 };
 
 export default useSocket;
