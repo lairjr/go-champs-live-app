@@ -57,7 +57,11 @@ const useSocket = () => {
     }
   };
 
-  return [game, incTeamScore];
+  const initGame = () => {
+    socket.send(JSON.stringify({ type: "init_game" }));
+  };
+
+  return [game, { incTeamScore, initGame }];
 };
 
 export default useSocket;

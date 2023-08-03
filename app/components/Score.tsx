@@ -7,7 +7,7 @@ interface Props {
 }
 
 export default function Score({ type }: Props) {
-  const [game, incTeamScore] = useSocket();
+  const [game, { incTeamScore }] = useSocket();
 
   console.log(game);
   const handleClick = () => {
