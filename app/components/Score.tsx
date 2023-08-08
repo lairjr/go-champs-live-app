@@ -1,6 +1,6 @@
 "use client";
 
-import useSocket, { TeamState } from "../hooks/useSocket";
+import useSocket from "../hooks/useSocket";
 import BoxScore from "./BoxScore";
 
 export default function Score() {

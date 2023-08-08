@@ -1,23 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import WsContext from "../providers/wscontext";
-
-export interface Player {
-  id: string;
-  name: string;
-}
-
-export interface TeamState {
-  name: string;
-  score: number;
-}
-
-export interface GameState {
-  id: string;
-  awayTeam: TeamState;
-  awayPlayers: Player[];
-  homeTeam: TeamState;
-  homePlayers: Player[];
-}
+import { GameState, Actions } from "../../types";
 
 const INITIAL_GAME_STATE: GameState = {
   id: "",
@@ -39,7 +22,7 @@ const useSocket = () => {
 
   useEffect(() => {
     socket.addEventListener("open", (data) => {
-      socket.send(JSON.stringify({ type: "load_game" }));
+      socket.send(JSON.stringify({ type: Actions.LoadGame }));
     });
 
     socket.addEventListener("message", (msg) => {
@@ -59,15 +42,15 @@ const useSocket = () => {
   }, []);
 
   const incTeamAwayScore = () => {
-    socket.send(JSON.stringify({ type: "inc_away_team_score" }));
+    socket.send(JSON.stringify({ type: Actions.IncAwayTeamScore }));
   };
 
   const incTeamHomeScore = () => {
-    socket.send(JSON.stringify({ type: "inc_home_team_score" }));
+    socket.send(JSON.stringify({ type: Actions.IncHomeTeamScore }));
   };
 
   const initGame = () => {
-    socket.send(JSON.stringify({ type: "init_game" }));
+    socket.send(JSON.stringify({ type: Actions.InitGame }));
   };
 
   return [game, { incTeamAwayScore, incTeamHomeScore, initGame }];
