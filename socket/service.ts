@@ -1,6 +1,7 @@
 import { WebSocketServer, WebSocket } from "ws";
-import reduce, { GameMessage, GameState, INITIAL_STATE } from "./gameReducer";
+import reduce, { INITIAL_STATE } from "./gameReducer";
 import { isValidGameMessage, mapGameToMessage } from "./messageMapper";
+import { GameMessage, GameState } from "@/types";
 
 let game: GameState = INITIAL_STATE;
 

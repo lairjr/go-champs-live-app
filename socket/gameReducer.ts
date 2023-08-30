@@ -9,23 +9,37 @@ export const INITIAL_STATE: GameState = {
   awayTeam: {
     name: "Away Team",
     score: 0,
+    stats: {
+      ["first-team-stat"]: "0",
+    },
   },
   awayPlayers: [
     {
       id: "first-player",
       name: "First player",
+      stats: {
+        ["first-player-stat"]: "0",
+      },
     },
   ],
   homeTeam: {
     name: "Home Team",
     score: 0,
+    stats: {
+      ["first-team-stat"]: "0",
+    },
   },
   homePlayers: [
     {
       id: "home-player",
       name: "Home player",
+      stats: {
+        ["first-player-stat"]: "0",
+      },
     },
   ],
+  playerStats: [{ id: "first-player-stat", title: "Points" }],
+  teamStats: [{ id: "first-team-stat", title: "Points" }],
 };
 
 type Action = (state: GameState, message: GameMessage) => GameState;

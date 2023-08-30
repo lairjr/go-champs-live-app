@@ -1,26 +1,36 @@
 "use client";
 
-import { Player, TeamState } from "../hooks/useSocket";
+import { Player, PlayerStat, Team } from "../../types";
 
 interface Props {
   players: Player[];
-  team: TeamState;
+  playerStats: PlayerStat[];
+  team: Team;
   incScore: () => void;
 }
 
 interface PlayerProps {
   player: Player;
+  playerStats: PlayerStat[];
 }
 
-function Player({ player }: PlayerProps) {
+function Player({ player, playerStats }: PlayerProps) {
   return (
     <tr>
       <td>{player.name}</td>
+      {playerStats.map((playerStat) => (
+        <td key={playerStat.id}>{player.stats[playerStat.id]}</td>
+      ))}
     </tr>
   );
 }
 
-export default function BoxScore({ players, team, incScore }: Props) {
+export default function BoxScore({
+  players,
+  playerStats,
+  team,
+  incScore,
+}: Props) {
   return (
     <div>
       <span>Time {team.name}:</span>
@@ -33,7 +43,7 @@ export default function BoxScore({ players, team, incScore }: Props) {
       <table>
         <tbody>
           {players.map((p) => (
-            <Player key={p.id} player={p} />
+            <Player key={p.id} player={p} playerStats={playerStats} />
           ))}
         </tbody>
       </table>

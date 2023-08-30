@@ -1,10 +1,6 @@
 import { RawData } from "ws";
-import {
-  GameMessage,
-  GameState,
-  NoAction,
-  REGISTRY_ACTIONS,
-} from "./gameReducer";
+import { NoAction, REGISTRY_ACTIONS } from "./gameReducer";
+import { GameMessage, GameState } from "@/types";
 
 export const mapToGameMessage = (message: RawData) => {
   try {

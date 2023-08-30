@@ -14,11 +14,23 @@ export interface GameMessage {
 export interface Player {
   id: string;
   name: string;
+  stats: { [key: string]: string };
+}
+
+export interface PlayerStat {
+  id: string;
+  title: string;
 }
 
 export interface Team {
   name: string;
   score: number;
+  stats: { [key: string]: string };
+}
+
+export interface TeamStat {
+  id: string;
+  title: string;
 }
 
 export interface GameState {
@@ -27,4 +39,6 @@ export interface GameState {
   awayPlayers: Player[];
   homeTeam: Team;
   homePlayers: Player[];
+  playerStats: PlayerStat[];
+  teamStats: TeamStat[];
 }

@@ -7,13 +7,17 @@ const INITIAL_GAME_STATE: GameState = {
   awayTeam: {
     name: "",
     score: 0,
+    stats: {},
   },
   awayPlayers: [],
   homeTeam: {
     name: "",
     score: 0,
+    stats: {},
   },
   homePlayers: [],
+  playerStats: [],
+  teamStats: [],
 };
 
 const useSocket = () => {
@@ -29,6 +33,7 @@ const useSocket = () => {
       const messageData = JSON.parse(msg.data);
 
       if (messageData.type === "update_game") {
+        console.log(messageData.payload, "payload");
         const gameState = messageData.payload as GameState;
         setGame(gameState);
       }
