@@ -28,19 +28,22 @@ function Player({ player, playerStats }: PlayerProps) {
 export default function BoxScore({
   players,
   playerStats,
-  team,
   incScore,
+  team,
 }: Props) {
   return (
     <div>
-      <span>Time {team.name}:</span>
-      <span>{team.score}</span>
-      {"    "}
-      <br />
+      <p>Box score: {team.name}</p>
 
-      <p>Box score</p>
-
-      <table>
+      <table style={{ backgroundColor: "GrayText" }}>
+        <thead>
+          <tr>
+            <td>Name</td>
+            {playerStats.map((playerStat) => (
+              <td key={playerStat.id}>{playerStat.title}</td>
+            ))}
+          </tr>
+        </thead>
         <tbody>
           {players.map((p) => (
             <Player key={p.id} player={p} playerStats={playerStats} />

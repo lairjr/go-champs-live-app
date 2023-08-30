@@ -2,13 +2,14 @@
 
 import useSocket from "../hooks/useSocket";
 import BoxScore from "./BoxScore";
+import TeamBox from "./TeamBox";
 
 export default function Score() {
   const [gameState, { incTeamAwayScore, incTeamHomeScore }] = useSocket();
-  console.log(gameState);
   return (
     <div>
-      <p>Box Score</p>
+      <TeamBox team={gameState.homeTeam} teamStats={gameState.teamStats} />
+      <TeamBox team={gameState.awayTeam} teamStats={gameState.teamStats} />
 
       <BoxScore
         players={gameState.homePlayers}
