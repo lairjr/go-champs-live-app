@@ -19,9 +19,25 @@ export type ApiGame = {
     phase_id: string;
 }
 
+export type Player = {
+    id: string;
+    name: string;
+}
+
+export type PlayerStat = {
+    id: string;
+    isDefaultOrder?: boolean;
+    title: string;
+}
+
 export type TeamHeader = {
     id: string;
     name: string;
+    players: Player[];
+}
+
+export type Tournament = {
+    playerStats: PlayerStat[];
 }
 
 export type Game = {
@@ -37,4 +53,5 @@ export type Game = {
     isFinished: boolean;
     location: string;
     phaseId: string;
+    tournament: Tournament;
 }
