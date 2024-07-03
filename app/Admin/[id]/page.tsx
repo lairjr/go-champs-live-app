@@ -1,5 +1,13 @@
-export default function Admin() {
+import { getGame } from "@/app/game/data";
+
+export default async function Admin({ params }: { params: { id: string } }) {
+    const { id } = params;
+    const game = await getGame(id);
+
     return (
-        <h1>Live admin</h1>
+        <main>
+            <h1>Live game {id}</h1>
+            <p>Home team: {game.homeTeam.name}</p>
+        </main>
     );
 }
