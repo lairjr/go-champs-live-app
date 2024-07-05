@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import WsContext from "../providers/wscontext";
 import { GameState, Actions } from "../../types";
+import { Game } from "../game/types";
 
 const INITIAL_GAME_STATE: GameState = {
   id: "",
@@ -20,7 +21,15 @@ const INITIAL_GAME_STATE: GameState = {
   teamStats: [],
 };
 
-const useSocket = () => {
+type GameActions = {
+  incTeamAwayScore: () => void;
+  incTeamHomeScore: () => void;
+  initGame: () => void;
+}
+
+type UseSocketReturn = [GameState, GameActions];
+
+const useSocket = (): UseSocketReturn => {
   const socket = useContext(WsContext);
   const [game, setGame] = useState(INITIAL_GAME_STATE);
 
