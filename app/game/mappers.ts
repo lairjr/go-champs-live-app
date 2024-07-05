@@ -55,7 +55,6 @@ const MOCK_TOURNAMENT = {
 };
 
 export const mapApiGameToEntityGame = (apiGame: ApiGame): Game => {
-    console.log('apiGame', apiGame);
     return {
         awayPlaceholder: apiGame.away_placeholder,
         awayScore: apiGame.away_score,

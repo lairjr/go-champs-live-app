@@ -1,0 +1,5 @@
+@use "bulma/sass" with (
+    $body-background-color: #fdfdff,
+);
+
+@import '../node_modules/bulma/bulma.scss';

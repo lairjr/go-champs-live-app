@@ -1,4 +1,4 @@
-import './globals.css'
+import './globals.scss'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -13,7 +13,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <meta name="theme-color" content="#000000" />
+      <body>
+        <section className="section">
+          <div className="container">
+            {children}
+          </div>
+        </section>
+      </body>
     </html>
   )
 }
