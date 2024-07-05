@@ -1,5 +1,22 @@
+@use "./styles/colors.scss" as colors;
+
 @use "bulma/sass" with (
-    $body-background-color: #fdfdff,
+    $family-primary: '"Fira Sans", sans-serif',
+
+    // Custom values
+    $title-color: colors.$dark,
+    $subtitle-color: colors.$red,
+    $text: colors.$dark,
+
+    // Default values
+    $primary: colors.$red,
+    $link: colors.$beige-lighter,
+    $info: colors.$dark,
+    $warning: colors.$red-light,
+
+    $body-background-color: colors.$white,
+    $body-color: colors.$dark,
 );
 
 @import '../node_modules/bulma/bulma.scss';
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans');

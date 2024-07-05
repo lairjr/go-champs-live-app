@@ -7,7 +7,6 @@ export default async function Admin({ params }: { params: { id: string } }) {
 
     return (
         <main>
-            <p>Game id: {id}</p>
             <GeneralBoard />
         </main>
     );
